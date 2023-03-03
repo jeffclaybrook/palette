@@ -99,8 +99,8 @@ ul {
 .container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 5px;
     height: 100%;
+    padding: .25rem;
     background: url('background.png') no-repeat center center / cover;
 }
 
