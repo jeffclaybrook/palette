@@ -100,14 +100,15 @@ ul {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     height: 100%;
-    padding: .25rem;
+    padding: 8px;
+    column-gap: 
     background: url('background.png') no-repeat center center / cover;
 }
 
 .container ul {
     display: flex;
     flex-direction: column;
-    gap: .25rem;
+    gap: 8px;
     grid-column: span 1;
 }
 
@@ -116,9 +117,9 @@ ul {
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 15px;
-    border-radius: 1rem;
-    font-size: .675rem;
+    height: 24px;
+    border-radius: 24px;
+    font-size: 10px;
 }
 
 li:nth-last-child(1) {
