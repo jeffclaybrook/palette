@@ -101,7 +101,7 @@ ul {
     grid-template-columns: repeat(5, 1fr);
     height: 100%;
     padding: 8px;
-    column-gap: 
+    column-gap: 8px;
     background: url('background.png') no-repeat center center / cover;
 }
 
