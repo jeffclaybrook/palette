@@ -112,12 +112,13 @@ ul {
     gap: 8px;
     grid-column: span 1;
     grid-row: span 13;
+    height: 100%;
 }
 
 .container li {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
+    justify-content: space-beteen;
     text-align: center;
     border-radius: 24px;
     font-size: 10px;
