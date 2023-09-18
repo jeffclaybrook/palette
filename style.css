@@ -117,7 +117,7 @@ ul {
 .container li {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     text-align: center;
     border-radius: 24px;
     font-size: 10px;
