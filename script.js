@@ -1,4 +1,4 @@
-const Neutral1 = [
+const N1 = [
     { token: 'N1-0', hex: '#ffffff' },
     { token: 'N1-10', hex: '#f9fcff' },
     { token: 'N1-50', hex: '#e7f2f9' },
@@ -12,9 +12,9 @@ const Neutral1 = [
     { token: 'N1-800', hex: '#283237' },
     { token: 'N1-900', hex: '#131d22' },
     { token: 'N1-1000', hex: '#000000' }
-]
-
-const Neutral2 = [
+   ]
+   
+   const N2 = [
     { token: 'N2-0', hex: '#ffffff' },
     { token: 'N2-10', hex: '#f9fcff' },
     { token: 'N2-50', hex: '#e4f3fb' },
@@ -28,9 +28,9 @@ const Neutral2 = [
     { token: 'N2-800', hex: '#253239' },
     { token: 'N2-900', hex: '#0f1d23' },
     { token: 'N2-1000', hex: '#000000' }
-]
-
-const Accent1 = [
+   ]
+   
+   const A1 = [
     { token: 'A1-0', hex: '#ffffff' },
     { token: 'A1-10', hex: '#f9fcff' },
     { token: 'A1-50', hex: '#def4ff' },
@@ -44,9 +44,9 @@ const Accent1 = [
     { token: 'A1-800', hex: '#003547' },
     { token: 'A1-900', hex: '#001f2a' },
     { token: 'A1-1000', hex: '#000000' }
-]
-
-const Accent2 = [
+   ]
+   
+   const A2 = [
     { token: 'A2-0', hex: '#ffffff' },
     { token: 'A2-10', hex: '#fbfcff' },
     { token: 'A2-50', hex: '#e6f2ff' },
@@ -60,9 +60,9 @@ const Accent2 = [
     { token: 'A2-800', hex: '#153349' },
     { token: 'A2-900', hex: '#001d32' },
     { token: 'A2-1000', hex: '#000000' }
-]
-
-const Accent3 = [
+   ]
+   
+   const A3 = [
     { token: 'A3-0', hex: '#ffffff' },
     { token: 'A3-10', hex: '#fdfbff' },
     { token: 'A3-50', hex: '#ebf0ff' },
@@ -76,22 +76,44 @@ const Accent3 = [
     { token: 'A3-800', hex: '#153058' },
     { token: 'A3-900', hex: '#001b3f' },
     { token: 'A3-1000', hex: '#000000' }
-]
-
-const text = ['#000000', '#ffffff']
-const palettes = [Neutral1, Neutral2, Accent1, Accent2, Accent3];
-const paintChips = [...Neutral1, ...Neutral2, ...Accent1, ...Accent2, ...Accent3];
-const container = document.querySelector('.container');
-
-palettes.forEach((palette, i) => {
-    const ulTag = document.createElement('ul');
-    container.appendChild(ulTag);
-    const ulTags = document.querySelectorAll('ul');
-    palette.forEach((item) => {
-        const { token, hex } = item;
-        const liTag = document.createElement('li');
-        liTag.innerText = `${token}`;
-        liTag.style.background = `${hex}`;
-        ulTags[i].appendChild(liTag);
+   ]
+   
+   function createChips() {
+    const container = document.querySelector(".container")
+    const palettes = [N1, N2, A1, A2, A3]
+    palettes.forEach((palette, i) => {
+     const ul = document.createElement("ul")
+     container.appendChild(ul)
+     const uls = document.querySelectorAll("ul")
+     palette.forEach(item => {
+      const { token, hex } = item
+      const li = document.createElement("li")
+      li.innerText = `${token}`
+      li.style.background = `${hex}`
+      li.addEventListener("click", () => {
+       copyHex(hex)
+      })
+      uls[i].appendChild(li)
+     })
     })
-})
+   }
+   
+   function copyHex(color) {
+    const clipboard = navigator.clipboard
+    clipboard.writeText(color)
+    .then(() => showToast(color))
+   }
+   
+   function showToast(color) {
+    const toast = document.querySelector(".toast")
+    toast.classList.add("visible")
+    toast.setAttribute("aria-hidden", false)
+    toast.innerText = `Copied ${color}`
+    setTimeout(() => {
+     toast.classList.remove("visible")
+     toast.setAttribute("aria-hidden", true)
+     toast.innerText = ""
+    }, 2000)
+   }
+   
+   createChips()
